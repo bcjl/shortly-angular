@@ -1,10 +1,11 @@
 angular.module('shortly.shorten', [])
 
-.controller('ShortenController', function ($scope, $location, Links) {
+.controller('ShortenController', function ($scope, $location, Links, UrlUtils) {
   // Your code here
-  $scope.url = '';
+  $scope.link = {url:''};
 
-  $scope.submit = function(){
-    console.log('LOGGED: ',$scope.url);
+  $scope.addLink = function(link){
+    if(UrlUtils.isValidUrl(link.url))
+      Links.addLink(link);
   };
 });

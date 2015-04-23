@@ -11,8 +11,20 @@ angular.module('shortly.services', [])
       return resp.data;
     });
   };
+
+  var addLink = function(link){
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    })
+    .then(function(resp){
+      return resp.data;
+    });
+  };
   return {
-    getLinks: getLinks
+    getLinks: getLinks,
+    addLink: addLink
   };
 })
 .factory('Auth', function ($http, $location, $window) {
@@ -60,5 +72,16 @@ angular.module('shortly.services', [])
     signup: signup,
     isAuth: isAuth,
     signout: signout
+  };
+})
+.factory('UrlUtils', function(){
+  var rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i;
+
+  var isValidUrl = function(url) {
+    return url.match(rValidUrl);
+  };
+
+  return {
+    isValidUrl: isValidUrl
   };
 });

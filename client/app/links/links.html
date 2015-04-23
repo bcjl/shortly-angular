@@ -1,9 +1,13 @@
 <div id='container' ng-controller='LinksController'>
+  <a href='/#/shorten'>Shorten Links!</a>
   <h1>Links</h1>
   {{data}}
   <ul>
-  <li ng-repeat='link in data track by $index'>{{link}}</li>
+    <li ng-repeat='link in data.links track by $index'>
+      <a href='http://localhost:3000/api/links/{{link.code}}'>
+        {{link.title}}
+      </a>
+    </li>
   </ul>
-
-  <!-- Your html here -->
+  <!-- http://localhost:3000/api/links/738dd -->
 </div>
