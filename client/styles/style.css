@@ -115,9 +115,7 @@ input[type=url]:focus {
 
 
 .error {
-  border: red solid 4px;
-  padding: 10px;
-  margin: 0 10px;
+  color:red;
 }
 
 .clean {
@@ -144,5 +142,9 @@ input[type=url]:focus {
 
 .creator .message {
   clear: both;
+}
+
+#counter{
+  float: right;
 }
 

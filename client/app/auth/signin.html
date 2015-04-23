@@ -1,12 +1,10 @@
 <div id='signin'>
   <h1>signin</h1>
   <form name="signinForm" ng-submit='signin()'>
+    <div class='error' ng-show='error'>{{error}}</div>
     <input type='text'ng-model='user.username'>
     <input type="password" ng-model='user.password'>
     <button>signin</button>
-
-    <h1 ng-show='submit'>Invalid Credentials</h1>
-
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>

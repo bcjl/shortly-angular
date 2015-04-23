@@ -1,14 +1,36 @@
 <div id='container' ng-controller='LinksController'>
-  <h3 ng-click='logout()'>Logout<h3>
+  <div class='logout' ng-click='logout()'>Logout</div>
   <a href='/#/shorten'>Shorten Links!</a>
-  <h1>Links</h1>
-  {{data}}
-  <ul>
-    <li ng-repeat='link in data.links track by $index'>
-      <a href='http://localhost:3000/api/links/{{link.code}}'>
+  <input ng-model='search'></input>
+  <h1>Links<span id='counter'>Visits</span></h1>
+  <table width='100%' border='1'>
+    <tr ng-repeat='link in data.links | orderBy:"-visits" | filter:search'>
+      <td width='1%'>
+        <a href='http://localhost:3000/api/links/{{link.code}}'>
+          <img src='/assets/redirect_icon.png'>
+        </a>
+      </td>
+      <td>
         {{link.title}}
+          </br>
+        <a href='http://localhost:3000/api/links/{{link.code}}'>
+          http://localhost:3000/api/links/{{link.code}}
+        </a>
+      </td>
+      <td align="right">
+        <h3>{{link.visits}}</h3>
+      </td>
+    </tr>
+  </table>
+  {{data}}
+  <!--
+  <ul>
+    <li ng-repeat='link in data.links | orderBy:"-visits" | filter:search'>
+      <a href='http://localhost:3000/api/links/{{link.code}}'>
+      {{link.title}}
+      <span id='counter'>{{link.visits}}</span>
       </a>
     </li>
   </ul>
-  <!-- http://localhost:3000/api/links/738dd -->
+  -->
 </div>

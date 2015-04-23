@@ -5,16 +5,18 @@ angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
+  $scope.error = '';
 
   $scope.signin = function () {
     console.log('yes');
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);
+        $scope.error = '';
         $location.path('/links');
       })
       .catch(function (error) {
-        console.error(error);
+        $scope.error = 'Invalid User Credentials';
       });
   };
 
@@ -22,10 +24,11 @@ angular.module('shortly.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);
+        $scope.error = '';
         $location.path('/links');
       })
       .catch(function (error) {
-        console.error(error);
+        $scope.error = 'Invalid User Credentials';
       });
   };
 });

@@ -1,10 +1,13 @@
 <div id='container'>
-<a href='/#/links'>View Links!</a>
-<!-- Your code here -->
-<h3 ng-click='logout()'>Logout<h3>
-<h2>Add Here</h2>
-<input ng-model ='link.url'></input>
-<button ng-click='addLink(link)'>Submit</button>
-</div>
+  <div class='logout' ng-click='logout()'>Logout</div>
+  <a href='/#/links'>Show Links!</a>
+  <h1>Add Link</h1>
 
+  <form name="shortenForm" ng-submit='addLink(link)'>
+    <div class='error' ng-show='error'>{{error}}</div>
+    <div ng-show="success">{{success}}</div>
+    <input type='text'ng-model='link.url'>
+    <button>Submit</button>
+  </form>
+</div>
 
