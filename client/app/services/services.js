@@ -84,4 +84,21 @@ angular.module('shortly.services', [])
   return {
     isValidUrl: isValidUrl
   };
+})
+.factory('AccountUtils', function(){
+  var reqDigit = /[0-9]/;
+  var reqCapital = /[A-Z]/;
+  var reqLowercase = /[a-z]/;
+  var isValidPassword = function(pw) {
+    return (!!pw.match(reqDigit) && !!pw.match(reqCapital) && !!pw.match(reqLowercase) && (pw.length > 8));
+  };
+
+  var isValidUsername = function(username){
+    return (username.length > 3);
+  };
+
+  return {
+    isValidPassword: isValidPassword,
+    isValidUsername: isValidUsername
+  };
 });
