@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -17,6 +18,11 @@ Icon
 node_modules/
 db/
 client/lib
+=======
+node_modules
+*.sqlite
+*.DS_Store
+>>>>>>> 4a6c6a2019c1a6f7bd19e544e8ea9e7436183f7d
 
 # Floobits
 .floo
